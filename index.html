@@ -2,13 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=https://example.com">
+    <meta http-equiv="refresh" content="0;url=https://your-github-username.github.io/redirect_page.html">
     <script type="text/javascript">
-        window.location.href = "https://example.com"
+        window.onload = function () {
+            // Parse the URL parameters to extract the OAuth tokens
+            var params = window.location.search.substr(1).split('&');
+            var oauthToken = '';
+            var oauthTokenSecret = '';
+            for (var i = 0; i < params.length; i++) {
+                var pair = params[i].split('=');
+                if (pair[0] === 'oauth_token') {
+                    oauthToken = pair[1];
+                } else if (pair[0] === 'oauth_token_secret') {
+                    oauthTokenSecret = pair[1];
+                }
+            }
+
+            // Store the tokens in local storage or send them to your app
+            localStorage.setItem('twitter_oauth_token', oauthToken);
+            localStorage.setItem('twitter_oauth_token_secret', oauthTokenSecret);
+
+            // Redirect back to your Flutter app
+            window.location.href = "your-flutter-app-scheme://";
+        }
     </script>
     <title>Redirecting...</title>
 </head>
 <body>
-    If you are not redirected automatically, follow this <a href='https://example.com'>link</a>.
+    If you are not redirected automatically, follow this <a href='https://your-github-username.github.io/redirect_page.html'>link</a>.
 </body>
 </html>
