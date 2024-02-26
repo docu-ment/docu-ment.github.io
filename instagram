@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Redirect</title>
+    <script>
+        window.onload = function () {
+            // Parse the URL parameters to extract the OAuth token
+            var params = window.location.search.substr(1).split('&');
+            var accessToken = '';
+            for (var i = 0; i < params.length; i++) {
+                var pair = params[i].split('=');
+                if (pair[0] === 'code') {
+                    accessToken = pair[1];
+                }
+            }
+
+            // Store the access token in local storage or send it to your app
+            localStorage.setItem('instagram_access_token', accessToken);
+
+            // Redirect back to your Flutter app with the new URI scheme "cloutapp"
+            window.location.href = "cloutapp://";
+        }
+    </script>
+</head>
+<body>
+    If you are not redirected automatically, follow this <a href="cloutapp://">link</a>.
+</body>
+</html>
