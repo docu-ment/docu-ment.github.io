@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=https://docu-ment.github.io/redirect_page.html">
     <script type="text/javascript">
         window.onload = function () {
             // Parse the URL parameters to extract the OAuth tokens
@@ -28,11 +27,16 @@
 
             // Redirect back to your Flutter app with the new URI scheme "cloutapp"
             window.location.href = "scheme:cloutapp";
+
+            // Display the received and stored data
+            document.body.innerHTML = '<h1>Received and Stored Twitter OAuth Tokens:</h1>' +
+                                       '<p>OAuth Token: ' + oauthToken + '</p>' +
+                                       '<p>OAuth Token Secret: ' + oauthTokenSecret + '</p>';
         }
     </script>
     <title>Redirecting...</title>
 </head>
 <body>
-    If you are not redirected automatically, follow this <a href='https://raw.githubusercontent.com/docu-ment/docu-ment.github.io/main/index.html'>link</a>.
+    <!-- No need for redirection -->
 </body>
 </html>
