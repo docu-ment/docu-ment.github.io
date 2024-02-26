@@ -18,6 +18,10 @@
                 }
             }
 
+            // Log the parsed tokens for debugging
+            console.log('Twitter OAuth Token:', oauthToken);
+            console.log('Twitter OAuth Token Secret:', oauthTokenSecret);
+
             // Store the tokens in local storage or send them to your app
             localStorage.setItem('twitter_oauth_token', oauthToken);
             localStorage.setItem('twitter_oauth_token_secret', oauthTokenSecret);
