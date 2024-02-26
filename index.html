@@ -26,7 +26,7 @@
             localStorage.setItem('twitter_oauth_token_secret', oauthTokenSecret);
 
             // Redirect back to your Flutter app with the new URI scheme "cloutapp"
-            window.location.href = "scheme:cloutapp";
+            window.location.href = "cloutapp://";
 
             // Display the received and stored data
             document.body.innerHTML = '<h1>Received and Stored Twitter OAuth Tokens:</h1>' +
