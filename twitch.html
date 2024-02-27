@@ -8,6 +8,7 @@
 <body>
     <h1>Authenticate with Twitch</h1>
     <button onclick="authenticate()">Connect with Twitch</button>
+    <div id="tokens"></div>
 
     <script>
         function authenticate() {
@@ -24,6 +25,26 @@
             // Redirect the user to the Twitch authorization URL
             window.location.href = authUrl;
         }
+
+        // Function to extract URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Function to display tokens
+        function displayTokens() {
+            var accessToken = getUrlParameter('code');
+            var refreshToken = getUrlParameter('refresh_token');
+
+            // Display tokens on the page
+            document.getElementById('tokens').innerHTML = '<p>Access Token: ' + accessToken + '</p><p>Refresh Token: ' + refreshToken + '</p>';
+        }
+
+        // Call displayTokens function when the page loads
+        window.onload = displayTokens;
     </script>
 </body>
 </html>
