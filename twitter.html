@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitch Authentication</title>
+</head>
+<body>
+    <h1>Authenticate with Twitch</h1>
+    <button onclick="authenticate()">Connect with Twitch</button>
+
+    <script>
+        function authenticate() {
+            var clientId = 'voello8ynqf01aayjh20w1n7vokroi'; // Replace with your Twitch application's client ID
+            var redirectUri = 'YOUR_REDIRECT_URI'; // Replace with your redirect URI
+
+            // Construct the Twitch authorization URL
+            var authUrl = 'https://id.twitch.tv/oauth2/authorize' +
+                '?client_id=' + clientId +
+                '&redirect_uri=' + encodeURIComponent(redirectUri) +
+                '&response_type=code' +
+                '&scope=user:read:email'; // Add additional scopes as needed
+
+            // Redirect the user to the Twitch authorization URL
+            window.location.href = authUrl;
+        }
+    </script>
+</body>
+</html>
