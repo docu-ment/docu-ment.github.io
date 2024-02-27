@@ -13,13 +13,13 @@
     <script>
         function authenticate() {
             var clientId = 'voello8ynqf01aayjh20w1n7vokroi'; // Replace with your Twitch application's client ID
-            var redirectUri = 'https://raw.githubusercontent.com/docu-ment/docu-ment.github.io/main/twitch.html'; // Replace with your redirect URI
+            var redirectUri = 'https://your-domain.com/twitch-callback'; // Replace with your redirect URI
 
             // Construct the Twitch authorization URL
             var authUrl = 'https://id.twitch.tv/oauth2/authorize' +
                 '?client_id=' + clientId +
                 '&redirect_uri=' + encodeURIComponent(redirectUri) +
-                '&response_type=code' +
+                '&response_type=token' +
                 '&scope=user:read:email'; // Add additional scopes as needed
 
             // Redirect the user to the Twitch authorization URL
@@ -30,21 +30,20 @@
         function getUrlParameter(name) {
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
+            var results = regex.exec(location.hash);
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         }
 
-        // Function to display tokens
-        function displayTokens() {
-            var accessToken = getUrlParameter('code');
-            var refreshToken = getUrlParameter('refresh_token');
+        // Function to display access token
+        function displayAccessToken() {
+            var accessToken = getUrlParameter('access_token');
 
-            // Display tokens on the page
-            document.getElementById('tokens').innerHTML = '<p>Access Token: ' + accessToken + '</p><p>Refresh Token: ' + refreshToken + '</p>';
+            // Display access token on the page
+            document.getElementById('tokens').innerHTML = '<p>Access Token: ' + accessToken + '</p>';
         }
 
-        // Call displayTokens function when the page loads
-        window.onload = displayTokens;
+        // Call displayAccessToken function when the page loads
+        window.onload = displayAccessToken;
     </script>
 </body>
 </html>
