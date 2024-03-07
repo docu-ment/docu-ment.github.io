@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Redirecting...</title>
+</head>
+<body>
     <script type="text/javascript">
         window.onload = function () {
             // Parse the URL parameters to extract the OAuth tokens
@@ -11,9 +14,9 @@
             for (var i = 0; i < params.length; i++) {
                 var pair = params[i].split('=');
                 if (pair[0] === 'oauth_token') {
-                    oauthToken = pair[1];
+                    oauthToken = decodeURIComponent(pair[1]);
                 } else if (pair[0] === 'oauth_token_secret') {
-                    oauthTokenSecret = pair[1];
+                    oauthTokenSecret = decodeURIComponent(pair[1]);
                 }
             }
 
@@ -27,16 +30,7 @@
 
             // Redirect back to your Flutter app with the new URI scheme "clout"
             window.location.href = "clout://";
-
-            // Display the received and stored data
-            document.body.innerHTML = '<h1>Received and Stored Twitter OAuth Tokens:</h1>' +
-                                       '<p>OAuth Token: ' + oauthToken + '</p>' +
-                                       '<p>OAuth Token Secret: ' + oauthTokenSecret + '</p>';
         }
     </script>
-    <title>Redirecting...</title>
-</head>
-<body>
-    <!-- No need for redirection -->
 </body>
 </html>
