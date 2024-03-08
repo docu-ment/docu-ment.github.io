@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Redirecting...</title>
-</head>
-<body>
-    <script type="text/javascript">
-        window.onload = function () {
+<script type="text/javascript">
+    window.onload = function () {
+        try {
             // Parse the URL parameters to extract the OAuth tokens
             var params = window.location.search.substr(1).split('&');
             var oauthToken = '';
@@ -30,7 +24,9 @@
 
             // Redirect back to your Flutter app with the new URI scheme "sociallevels"
             window.location.href = "sociallevels://callback";
+        } catch (error) {
+            // Log any errors that occur
+            console.error('An error occurred:', error);
         }
-    </script>
-</body>
-</html>
+    }
+</script>
