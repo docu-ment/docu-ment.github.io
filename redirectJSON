@@ -12,3 +12,17 @@
    ["B0:4E:29:05:4E:AB:44:C6:9A:CB:D5:89:A3:A8:1C:FF:09:6B:45:00:C5:FD:D1:3E:3E:12:C5:F3:FB:BD:BA:D3"]
   }
 }]
+
+
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.example.sociallevels",
+      "sha256_cert_fingerprints": [
+        "YOUR_SHA256_FINGERPRINT_HERE"
+      ]
+    }
+  }
+]
