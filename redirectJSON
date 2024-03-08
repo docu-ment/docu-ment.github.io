@@ -1,7 +1,7 @@
-##https://developer.android.com/codelabs/android-app-links-introduction#5
-#https://www.youtube.com/watch?v=rvDq2WMU4mw
+//https://developer.android.com/codelabs/android-app-links-introduction#5
+//https://www.youtube.com/watch?v=rvDq2WMU4mw
 
-com.example.sociallevels
+//com.example.sociallevels
 
 [{
   "relation": ["delegate_permission/common.handle_all_urls"],
