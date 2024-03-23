@@ -1,1 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter OAuth Callback</title>
+</head>
+<body>
+    <script>
+        // Parse the URL parameters to extract OAuth tokens
+        const params = new URLSearchParams(window.location.search);
+        const oauthToken = params.get('oauth_token');
+        const oauthVerifier = params.get('oauth_verifier');
 
+        // Send the tokens back to your Flutter app
+        window.location = 'sociallevels://callback?oauth_token=' + oauthToken + '&oauth_verifier=' + oauthVerifier;
+    </script>
+</body>
+</html>
