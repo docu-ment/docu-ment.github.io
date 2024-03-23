@@ -16,9 +16,11 @@
         // Extract OAuth token and verifier from URL
         const oauthToken = getQueryParam('oauth_token');
         const oauthVerifier = getQueryParam('oauth_verifier');
+        
 
         // Construct URL to redirect user back to Twitter app
-        const redirectUrl = `twitter://oauth?oauth_token=${oauthToken}&oauth_verifier=${oauthVerifier}`;
+       const redirectUrl = `twitter://oauth?oauth_token=${encodeURIComponent(oauthToken)}&oauth_verifier=${encodeURIComponent(oauthVerifier)}`;
+
 
         // Redirect user back to Twitter app
         window.location = redirectUrl;
