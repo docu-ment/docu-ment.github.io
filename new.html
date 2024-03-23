@@ -6,20 +6,22 @@
     <title>Twitter OAuth Callback</title>
 </head>
 <body>
-    <div id="tokens">
-        <p id="oauthToken"></p>
-        <p id="oauthVerifier"></p>
-    </div>
-
     <script>
-        // Parse the URL parameters to extract OAuth tokens
-        const params = new URLSearchParams(window.location.search);
-        const oauthToken = params.get('oauth_token');
-        const oauthVerifier = params.get('oauth_verifier');
+        // Function to extract query parameters from URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
 
-        // Display the tokens on the webpage
-        document.getElementById('oauthToken').innerText = 'OAuth Token: ' + oauthToken;
-        document.getElementById('oauthVerifier').innerText = 'OAuth Verifier: ' + oauthVerifier;
+        // Extract OAuth token and verifier from URL
+        const oauthToken = getQueryParam('oauth_token');
+        const oauthVerifier = getQueryParam('oauth_verifier');
+
+        // Construct URL to redirect user back to Twitter app
+        const redirectUrl = `twitter://oauth?oauth_token=${oauthToken}&oauth_verifier=${oauthVerifier}`;
+
+        // Redirect user back to Twitter app
+        window.location = redirectUrl;
     </script>
 </body>
 </html>
