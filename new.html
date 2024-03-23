@@ -16,14 +16,19 @@
         // Extract OAuth token and verifier from URL
         const oauthToken = getQueryParam('oauth_token');
         const oauthVerifier = getQueryParam('oauth_verifier');
-        
 
-        // Construct URL to redirect user back to Twitter app
-       const redirectUrl = `twitter://oauth?oauth_token=${encodeURIComponent(oauthToken)}&oauth_verifier=${encodeURIComponent(oauthVerifier)}`;
-
-
-        // Redirect user back to Twitter app
-        window.location = redirectUrl;
+        // Check if both token and verifier are present
+        if (oauthToken && oauthVerifier) {
+            // Send the OAuth token and verifier back to the Flutter app
+            window.flutter_inappwebview.callHandler('twitterAuthCallback', {
+                oauthToken: oauthToken,
+                oauthVerifier: oauthVerifier
+            });
+        } else {
+            // Handle error or redirect back to the app
+            alert('OAuth token or verifier not found!');
+            // You can redirect back to the app here if needed
+        }
     </script>
 </body>
 </html>
